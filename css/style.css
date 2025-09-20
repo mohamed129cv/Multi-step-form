@@ -1,0 +1,499 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+body {
+  padding: var(--padding);
+  background-color: var(--Blue-100);
+  font-family: "Ubuntu-Bold", Courier;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Ubuntu-Bold";
+  src: url("../assets/fonts/Ubuntu-Bold.ttf");
+  font-weight: 400 500 700;
+}
+@font-face {
+  font-family: "Ubuntu-Medium";
+  src: url("../assets/fonts/Ubuntu-Medium.ttf");
+  font-weight: 400 500 700;
+}
+@font-face {
+  font-family: "Ubuntu-Regular";
+  src: url("../assets/fonts/Ubuntu-Regular.ttf");
+  font-weight: 400 500 700;
+}
+:root {
+  --Blue-950: hsl(213, 96%, 18%);
+  --Purple-600: hsl(243, 100%, 62%);
+  --Blue-300: hsl(228, 100%, 84%);
+  --Blue-200: hsl(206, 94%, 87%);
+  --Red-500: hsl(354, 84%, 57%);
+  --Grey-500: hsl(231, 11%, 63%);
+  --Purple-200: hsl(229, 24%, 87%);
+  --Blue-100: hsl(218, 100%, 97%);
+  --Blue-50: hsl(231, 100%, 99%);
+  --White: hsl(0, 100%, 100%);
+  --border-raduis: 0.5rem;
+  --transition: all 0.5s;
+  --shadow: 0rem 0rem 0.1rem rgba(0, 0, 0, 0.3);
+  --padding: clamp(1rem, 0.9rem + 1vw, 2.5rem);
+}
+h2 {
+  font-size: 1.7rem;
+  font-family: "Ubuntu-Bold", Courier;
+  color: var(--Blue-950);
+  font-weight: 700;
+}
+.desc {
+  color: var(--Grey-500);
+  margin: 0.7rem 0;
+}
+.btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+  transition: var(--transition);
+}
+.btns .next {
+  justify-self: end;
+  outline: none;
+  border: none;
+  background-color: var(--Blue-950);
+  border-radius: var(--border-raduis);
+  color: var(--White);
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0.7rem;
+}
+.btns .next:hover {
+  background-color: var(--Purple-600);
+}
+.btns .back {
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--Grey-500);
+  font-family: "Ubuntu-Bold", Courier;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btns .back:hover {
+  color: var(--Blue-950);
+}
+main {
+  width: 85%;
+  margin: auto;
+  box-shadow: var(--shadow);
+  padding: var(--padding);
+  display: grid;
+  background-color: var(--White);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  border-radius: var(--border-raduis);
+  position: relative;
+}
+aside {
+  grid-column: span 1;
+  background-image: url("../assets/images/bg-sidebar-desktop.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: var(--padding);
+  display: flex;
+  flex-flow: column wrap;
+  gap: 2rem;
+  overflow: hidden;
+}
+aside section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+}
+aside .index {
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.1rem solid var(--White);
+  transition: var(--transition);
+}
+aside .index.active {
+  background-color: var(--Blue-300);
+  color: var(--Blue-950);
+  border: none;
+}
+aside p {
+  color: var(--White);
+  text-transform: uppercase;
+}
+aside span {
+  display: block;
+  color: var(--Grey-500);
+}
+
+.all-progress {
+  grid-column: span 2;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.form,
+.form .fild {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 0.5rem;
+  position: relative;
+}
+.form {
+  gap: 1.5rem;
+}
+.form input {
+  border-radius: 0.3rem;
+  outline: none;
+  border: 0.1rem solid var(--Grey-500);
+  padding: 1rem;
+  transition: var(--transition);
+  color: var(--Blue-950);
+  text-transform: capitalize;
+}
+.form input:focus {
+  border-color: var(--Purple-600);
+}
+.form input.invaild {
+  border-color: var(--Red-500);
+}
+
+.form input.vaild {
+  background-color: var(--White);
+}
+.error {
+  opacity: 0;
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  color: var(--Red-500);
+  pointer-events: none;
+  transition: var(--transition);
+}
+.form input.invaild + .error {
+  top: 0;
+  opacity: 1;
+  pointer-events: all;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 3rem 0;
+}
+.cards .card {
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.7rem;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-raduis);
+  background-color: var(--White);
+  padding: 1rem;
+  border: 0.1rem solid var(--Purple-200);
+  transition: var(--transition);
+  cursor: pointer;
+}
+.cards .card:hover,
+.cards .card.active {
+  border-color: var(--Blue-950);
+}
+.cards img {
+  width: 25%;
+}
+.cards .card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--Blue-950);
+}
+.discount {
+  color: var(--Blue-950);
+  opacity: 0;
+  transform: translateY(1rem);
+  pointer-events: all;
+  transition: var(--transition);
+}
+.discount.active {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+.discount.getOut {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+.cards .time {
+  grid-column: span 3;
+  background-color: var(--Blue-100);
+  border-radius: var(--border-raduis);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.time p {
+  color: var(--Grey-500);
+  transition: var(--transition);
+  cursor: pointer;
+}
+.time p.active {
+  color: var(--Blue-950);
+}
+.che {
+  height: 1.4rem;
+  width: 3rem;
+  position: relative;
+  background-color: var(--Blue-950);
+  border-radius: 3rem;
+}
+.che input {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+}
+.che .fild {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: var(--Blue-950);
+  border-radius: 3rem;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.che .fild::after {
+  content: "";
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--White);
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  transition: var(--transition);
+}
+.che input:checked + .fild::after {
+  left: 1.8rem;
+}
+
+.add-help {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.add-help .card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.2rem;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-raduis);
+  padding: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 0.1rem solid var(--Purple-200);
+}
+.add-help .card:hover {
+  border: 0.1rem solid var(--Purple-600);
+}
+
+.add-help .card.active {
+  border: 0.1rem solid var(--Purple-600);
+  background-color: var(--Blue-50);
+}
+.add-help .card-body {
+  flex-grow: 1;
+}
+.add-help h4 {
+  color: var(--Blue-950);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0.4rem 0;
+}
+.add-help .number {
+  color: var(--Purple-600);
+}
+.add-help input {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+.add-help input:checked {
+  background-color: var(--Purple-600);
+}
+.check {
+  background-color: var(--Blue-100);
+  padding: 1rem;
+  border-radius: var(--border-raduis);
+}
+.data-plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem solid var(--Purple-200);
+}
+.data-plan .type-data h4,
+.data-plan .price {
+  color: var(--Blue-950);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.data-plan .type-data p {
+  color: var(--Grey-500);
+  text-decoration: underline;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.data-plan .type-data p:hover {
+  color: var(--Purple-600);
+}
+.add-pick,
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 0.5rem;
+}
+.data-add {
+  margin-block: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.add-pick .name,
+.total-price .total {
+  color: var(--Grey-500);
+}
+.add-pick .price,
+.total-price .price {
+  color: var(--Blue-950);
+  font-weight: 700;
+}
+.total-price .price {
+  font-size: 1.2rem;
+}
+.progress_5 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+.progress {
+  width: 100%;
+  padding: var(--padding);
+  background-color: var(--White);
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(100%);
+  transition: var(--transition);
+}
+.progress.active {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.progress.go-out {
+  transform: translateX(-100%);
+}
+
+@media screen and (max-width: 48rem) {
+  body {
+    padding: 0;
+  }
+  main {
+    width: 100%;
+    min-height: 90vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 1fr;
+    padding: 0;
+    border-radius: 0rem;
+    position: relative;
+    background-color: transparent;
+  }
+  aside {
+    background-image: url("../assets/images/bg-sidebar-mobile.svg");
+    grid-row: span 1;
+    width: 100%;
+    flex-flow: row;
+    gap: 2rem;
+    justify-content: center;
+    background-size: cover;
+    border-radius: 0rem;
+  }
+  aside section {
+    border-radius: 0rem;
+  }
+  aside section .text {
+    display: none;
+  }
+  .all-progress {
+    grid-column: span 1;
+    min-height: 700px;
+    border-radius: var(--border-raduis);
+    width: 90%;
+    margin: auto;
+    position: absolute;
+    top: 150px;
+    left: 5%;
+  }
+  .btns {
+    background-color: var(--White);
+    width: 100%;
+    padding: var(--padding);
+    margin-bottom: 0;
+    position: fixed;
+    bottom: 0%;
+  }
+}
+@media screen and (max-width: 30rem) {
+  main {
+    width: 100%;
+    border-radius: 0rem;
+  }
+}
+@media screen and (min-width: 48.99rem) {
+  main {
+    width: 100%;
+    border-radius: 0rem;
+  }
+  .btns {
+    position: absolute;
+    width: 57%;
+    margin: auto;
+    bottom: 1rem;
+    right: 3rem;
+    transform: translateY(-50%);
+  }
+}
