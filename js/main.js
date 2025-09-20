@@ -250,7 +250,6 @@ btnBack.addEventListener("click", (e) => {
   if (currentStep > 0) {
     removeActiveFromProgerss();
     removeActiveFromIndex();
-    console.log(currentStep);
     steps[currentStep - 1].classList.add("active");
     index[currentStep - 1].classList.add("active");
     if (currentStep > 0) {
